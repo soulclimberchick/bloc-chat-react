@@ -1,0 +1,13 @@
+li {
+  padding: 5px;
+  text-align: left;
+}
+
+ul {
+  background-color: lightgrey;
+  display: block;
+  float: left;
+  height: auto;
+  margin: auto;
+  width: 20%;
+}
