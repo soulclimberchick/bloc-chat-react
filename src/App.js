@@ -12,7 +12,7 @@ import './App.css';
     storageBucket: "bloc-chat-react-e0a88.appspot.com",
     messagingSenderId: "139421148139"
   };
-  
+
   firebase.initializeApp(config);
 
 class App extends Component {
