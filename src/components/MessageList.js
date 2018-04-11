@@ -12,7 +12,7 @@ export class MessageList extends Component {
   handleChange (e) {
     e.preventDefault();
     this.setState({
-      username: 'user',
+      username: this.props.user,
       content: e.target.value,
       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: this.props.activeRoom
@@ -27,7 +27,7 @@ export class MessageList extends Component {
       sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: this.state.roomId
     });
-    this.setState({ username: "", content: "", sentAt: "", roomId: "" });
+    this.setState({ username: '', content: '', sentAt: '', roomId: '' });
   }
 
   componentDidMount() {
@@ -42,15 +42,15 @@ export class MessageList extends Component {
     const activeRoom = this.props.activeRoom;
     const messageBar = (
       <form onSubmit={this.createMessage}>
-        <input type="text" value={this.state.content} placeholder="Enter Message" onChange={this.handleChange} />
-        <input type="submit" value="Send" />
+        <input type='text' value={this.state.content} placeholder='Enter Message' onChange={this.handleChange} />
+        <input type='submit' value='Send' />
       </form>
     );
 
     const messageList = (
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
-          return <li key={message.key}><h3>{message.username}:</h3>{message.content}:<h4>{message.sentAt}</h4></li>
+          return <li key={message.key}>{message.username}: {message.content}</li>
         }
         return null;
       })
