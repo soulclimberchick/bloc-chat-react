@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
 
 export class RoomList extends Component {
   constructor (props) {

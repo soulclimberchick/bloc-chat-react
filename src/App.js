@@ -21,20 +21,26 @@ class App extends Component {
     super(props);
     this.state = {activeRoom: ''};
     this.activeRoom = this.activeRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   activeRoom (room) {
     this.setState({ activeRoom: room });
   }
 
+  setUser (user) {
+    this.setState({ user: user });
+  }
+
   render () {
     const showMessages = this.state.activeRoom;
+
     return (
       <div>
         <h1>{this.state.activeRoom.name || 'Select A Room'}</h1>
         <RoomList firebase={firebase} activeRoom={this.activeRoom} />
         { showMessages ?
-        <MessageList firebase={firebase} activeRoom={this.state.activeRoom.key}/>
+        (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key }/>)
         : null
         }
       </div>
