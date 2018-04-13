@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div>
         <h1>{this.state.activeRoom.name || 'Select A Room'}</h1>
-        <User firebase={firebase} setUser={this.setUser} />
+        <User firebase={firebase} setUser={this.setUser} greeting={ currentUser } />
         <RoomList firebase={firebase} activeRoom={this.activeRoom} />
         { showMessages ?
         (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key } user={currentUser} />)

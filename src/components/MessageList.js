@@ -7,6 +7,7 @@ export class MessageList extends Component {
     this.messagesRef = this.props.firebase.database().ref('messages');
     this.handleChange = this.handleChange.bind(this);
     this.createMessage = this.createMessage.bind(this);
+    this.setTime = this.setTime.bind(this);
   }
 
   handleChange (e) {
@@ -38,6 +39,12 @@ export class MessageList extends Component {
     });
   }
 
+  setTime(time) {
+    const format = new Date(time);
+    const newTime = String(format);
+    return newTime;
+  }
+
   render() {
     const activeRoom = this.props.activeRoom;
     const messageBar = (
@@ -50,7 +57,7 @@ export class MessageList extends Component {
     const messageList = (
       this.state.messages.map((message) => {
         if (message.roomId === activeRoom) {
-          return <li key={message.key}>{message.username}: {message.content}</li>
+          return <li key={message.key}>{message.username}: {message.content} on {this.setTime(message.sentAt)}</li>
         }
         return null;
       })
